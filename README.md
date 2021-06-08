@@ -74,9 +74,21 @@ Some things to try:
    - Modify the `"onAutoForward"` attribute in your `portsAttributes` from `"notify"` to `"openBrowser"`.
    - Press <kbd>F1</kbd> and select the **Remote-Containers: Rebuild Container** or **Codespaces: Rebuild Container** command so the modifications are picked up.  
 
-### More samples
+### PyBryt Demo 
+1. **AutoAssessment:**
+   - Open `Demo Folder`
+   - Try one of the PyBryt Demos 
+   - Fibonacci 
+   - Goldbach
+   - Median
 
-- [Tweeter App - Python and Django](https://github.com/Microsoft/python-sample-tweeterapp)
+Simply launch the `index.ipynb` notebook in each of the directories under `demo` from Jupyter Notebook, which demonstrates the process of using PyBryt to assess student submissions.
+
+### Otter-Grade Demo 
+1. **Grader:**
+   - Open `minilabs`
+   - Try one of the MiniLabs
+Simply launch the `.ipynb` notebook in each of the directories under `minilabs` from Jupyter Notebook, which demonstrates the process of using otter-grader to assess student submissions.
 
 ## Contributing
 
