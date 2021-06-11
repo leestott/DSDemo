@@ -1,10 +1,12 @@
-# Try Out Development Containers: Python
+# PyBryt + Otter Grder - Visual Studio Code/GitHub CodeSpaces Development Containers: Python
 
 A **development container** is a running [Docker](https://www.docker.com) container with a well-defined tool/runtime stack and its prerequisites. You can try out development containers with **[GitHub Codespaces](https://github.com/features/codespaces)** or **[Visual Studio Code Remote - Containers](https://aka.ms/vscode-remote/containers)**.
 
 This is a sample project that lets you try out either option in a few easy steps. We have a variety of other [vscode-remote-try-*](https://github.com/search?q=org%3Amicrosoft+vscode-remote-try-&type=Repositories) sample projects, too.
 
-> **Note:** If you already have a Codespace or dev container, you can jump to the [Things to try](#things-to-try) section. 
+> **Note:** If you already have a Codespace or dev container, you can jump to the [Things to try](#things-to-try) section.
+> **Note:** This container runs as a non-root user with sudo access by default. Comment out `"remoteUser": "vscode"` in `.devcontainer/devcontainer.json` if you'd prefer to run as root.
+ 
 
 ## Setting up the development container
 
@@ -32,7 +34,33 @@ Follow these steps to open this sample in a container using the VS Code Remote -
    - Press <kbd>F1</kbd> and select the **Remote-Containers: Open Folder in Container...** command.
    - Select the cloned copy of this folder, wait for the container to start, and try things out!
 
-## Things to try
+3. **Rebuild or update your container**
+
+   You may want to make changes to your container, such as installing a different version of a software or forwarding a new port. You'll rebuild your container for your changes to take effect. 
+
+   **Open browser automatically:** As an example change, let's update the `portsAttributes` in the `.devcontainer/devcontainer.json` file to open a browser when our port is automatically forwarded.
+   
+   - Open the `.devcontainer/devcontainer.json` file.
+   - Modify the `"onAutoForward"` attribute in your `portsAttributes` from `"notify"` to `"openBrowser"`.
+   - Press <kbd>F1</kbd> and select the **Remote-Containers: Rebuild Container** or **Codespaces: Rebuild Container** command so the modifications are picked up.  
+
+### PyBryt Demo 
+1. **AutoAssessment:**
+   - Open `Demo Folder`
+   - Try one of the PyBryt Demos 
+   - Fibonacci 
+   - Goldbach
+   - Median
+
+Simply launch the `index.ipynb` notebook in each of the directories under `demo` from Jupyter Notebook, which demonstrates the process of using PyBryt to assess student submissions.
+
+### Otter-Grade Demo 
+1. **Grader:**
+   - Open `minilabs`
+   - Try one of the MiniLabs
+Simply launch the `.ipynb` notebook in each of the directories under `minilabs` from Jupyter Notebook, which demonstrates the process of using otter-grader to assess student submissions.
+
+## Things to try you can us other development languages or build other types of apps
 
 Once you have this sample opened, you'll be able to work with it like you would locally.
 
@@ -62,35 +90,7 @@ Some things to try:
       - Clicking the globe icon in the 'Ports' view. The 'Ports' view gives you an organized table of your forwarded ports, and you can access it with the command **Ports: Focus on Ports View**.
    - Notice port 9000 in the 'Ports' view is labeled "Hello Remote World." In `devcontainer.json`, you can set `"portsAttributes"`, such as a label for your forwarded ports and the action to be taken when the port is autoforwarded.
    
-   > **Note:** In Remote - Containers, you can access your app at `http://localhost:9000` in a local browser. But in a browser-based Codespace, you must click the link from the notification or the `Ports` view so that the service handles port forwarding in the browser and generates the correct URL.
-
-4. **Rebuild or update your container**
-
-   You may want to make changes to your container, such as installing a different version of a software or forwarding a new port. You'll rebuild your container for your changes to take effect. 
-
-   **Open browser automatically:** As an example change, let's update the `portsAttributes` in the `.devcontainer/devcontainer.json` file to open a browser when our port is automatically forwarded.
-   
-   - Open the `.devcontainer/devcontainer.json` file.
-   - Modify the `"onAutoForward"` attribute in your `portsAttributes` from `"notify"` to `"openBrowser"`.
-   - Press <kbd>F1</kbd> and select the **Remote-Containers: Rebuild Container** or **Codespaces: Rebuild Container** command so the modifications are picked up.  
-
-### PyBryt Demo 
-1. **AutoAssessment:**
-   - Open `Demo Folder`
-   - Try one of the PyBryt Demos 
-   - Fibonacci 
-   - Goldbach
-   - Median
-
-Simply launch the `index.ipynb` notebook in each of the directories under `demo` from Jupyter Notebook, which demonstrates the process of using PyBryt to assess student submissions.
-
-### Otter-Grade Demo 
-1. **Grader:**
-   - Open `minilabs`
-   - Try one of the MiniLabs
-Simply launch the `.ipynb` notebook in each of the directories under `minilabs` from Jupyter Notebook, which demonstrates the process of using otter-grader to assess student submissions.
-
-## Contributing
+   > **Note:** In Remote - Containers, you can access your app at `http://localhost:9000` in a local browser. But in a browser-based Codespace, you must click the link from the notification or the `Ports` view so that the service handles port forwarding in the browser and generates the correct URL.## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
