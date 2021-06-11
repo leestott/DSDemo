@@ -17,10 +17,34 @@ ARG INSTALL_NODE="true"
 ARG NODE_VERSION="lts/*"
 RUN if [ "${INSTALL_NODE}" = "true" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
 
-# [Optional] If your pip requirements rarely change, uncomment this section to add them to the image.
-COPY requirements.txt /tmp/pip-tmp/
-RUN pip3 --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
-    && rm -rf /tmp/pip-tmp
+# Configure apt and install packages
+   
+RUN apt-get update \
+    && apt-get -y install --no-install-recommends apt-utils dialog 2>&1 \
+    #
+    # Verify git, process tools, lsb-release (common in install instructions for CLIs) installed
+    && apt-get -y install git openssh-client less iproute2 procps lsb-release \
+    #
+    # Install DataScience Python Libraries
+    && pip --disable-pip-version-check --no-cache-dir install pybryt \ 
+    && pip --disable-pip-version-check --no-cache-dir install pylint \ 
+    && pip --disable-pip-version-check --no-cache-dir install jupyter \
+    && pip --disable-pip-version-check --no-cache-dir install datascience \	
+    && pip --disable-pip-version-check --no-cache-dir install otter-grader \
+    && pip --disable-pip-version-check --no-cache-dir install numpy \
+    && pip --disable-pip-version-check --no-cache-dir install pandas \
+    && pip --disable-pip-version-check --no-cache-dir install scipy \
+    && pip --disable-pip-version-check --no-cache-dir install folium>=0.9.1 \
+    && pip --disable-pip-version-check --no-cache-dir install matplotlib \
+    && pip --disable-pip-version-check --no-cache-dir install ipywidgets>=7.0.0 \
+    && pip --disable-pip-version-check --no-cache-dir install bqplot \
+    && pip --disable-pip-version-check --no-cache-dir install nbinteract>=0.0.12 \
+    && pip --disable-pip-version-check --no-cache-dir install otter-grader \
+    && pip --disable-pip-version-check --no-cache-dir install okpy  \
+
+# Update Python environment based on requirements.txt
+# && pip --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
+# && rm -rf /tmp/pip-tmp \
 
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
