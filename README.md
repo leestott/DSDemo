@@ -7,6 +7,8 @@ This is a sample project that lets you try out either option in a few easy steps
 > **Note:** If you already have a Codespace or dev container, you can jump to the [Things to try](#things-to-try) section.
 > **Note:** This container runs as a non-root user with sudo access by default. Comment out `"remoteUser": "vscode"` in `.devcontainer/devcontainer.json` if you'd prefer to run as root.
  
+## Running this in Binder 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/leestott/dsdemo/HEAD)
 
 ## Setting up the development container
 
